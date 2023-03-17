@@ -8,7 +8,7 @@
 
 ## 应用架构图：
 
-![Frame](Frame.jpg)
+![Frame](Frame.png)
 
 首先确保电脑已经安装**truffle、webpack、ganache-cli**
 
