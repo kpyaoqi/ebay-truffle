@@ -36,6 +36,7 @@ truffle unbox webpack
     "dev": "webpack-dev-server"
   },
   "devDependencies": {
+    "@openzeppelin/truffle-upgrades": "^1.17.0",
     "copy-webpack-plugin": "^5.0.5",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
