@@ -3,14 +3,14 @@ pragma solidity ^0.8.17;
 
 import "../contracts/Escrow.sol";
 
-contract EcommerceStore  {
+contract EcommerceStoreV2 {
     // 商品状态
     enum ProductStatus {
         Open,
         Sold,
         Unsold
     }
-	
+
     enum ProductCondition {
         New,
         Used
@@ -66,7 +66,7 @@ contract EcommerceStore  {
         bool revealed;
     }
 
-	// 添加商品事件
+    // 添加商品事件
     event NewProduct(
         uint256 _productId,
         string _name,
@@ -82,7 +82,7 @@ contract EcommerceStore  {
     // constructor() {
     //     productIndex = 0;
     // }
-    
+
     // 商品初始下标
     function store(uint256 index_) public {
         productIndex = index_;
@@ -115,11 +115,23 @@ contract EcommerceStore  {
         product.condition = ProductCondition(_productCondition);
         // 商品ID对应的商店
         productIdInStore[productIndex] = msg.sender;
-		emit NewProduct(productIndex, _name, _category, _imageLink, _descLink, _auctionStartTime, _auctionEndTime, stringToUint(_startPrice), _productCondition);
+        emit NewProduct(
+            productIndex,
+            _name,
+            _category,
+            _imageLink,
+            _descLink,
+            _auctionStartTime,
+            _auctionEndTime,
+            stringToUint(_startPrice),
+            _productCondition
+        );
     }
 
     // 获取商品信息
-    function getProduct(uint256 _productId)
+    function getProduct(
+        uint256 _productId
+    )
         public
         view
         returns (
@@ -153,11 +165,10 @@ contract EcommerceStore  {
     }
 
     // 出价
-    function bid(uint256 _productId, bytes32 _bid)
-        public
-        payable
-        returns (bool)
-    {
+    function bid(
+        uint256 _productId,
+        bytes32 _bid
+    ) public payable returns (bool) {
         Product storage product = stores[productIdInStore[_productId]][
             _productId
         ];
@@ -240,15 +251,9 @@ contract EcommerceStore  {
     }
 
     // 最高出价人信息
-    function highestBidderInfo(uint256 _productId)
-        public
-        view
-        returns (
-            address,
-            uint256,
-            uint256
-        )
-    {
+    function highestBidderInfo(
+        uint256 _productId
+    ) public view returns (address, uint256, uint256) {
         Product storage product = stores[productIdInStore[_productId]][
             _productId
         ];
@@ -310,26 +315,15 @@ contract EcommerceStore  {
         }
     }
 
-    function escrowAddressForProduct(uint256 _productId)
-        public
-        view
-        returns (address)
-    {
+    function escrowAddressForProduct(
+        uint256 _productId
+    ) public view returns (address) {
         return productEscrow[_productId];
     }
 
-    function escrowInfo(uint256 _productId)
-        public
-        view
-        returns (
-            address,
-            address,
-            address,
-            bool,
-            uint256,
-            uint256
-        )
-    {
+    function escrowInfo(
+        uint256 _productId
+    ) public view returns (address, address, address, bool, uint256, uint256) {
         return Escrow(productEscrow[_productId]).escrowInfo();
     }
 
@@ -342,12 +336,16 @@ contract EcommerceStore  {
     }
 
     // 生成密钥
-    function keccak(string memory _amount, string memory _secret)
-        public
-        pure
-        returns (bytes32)
-    {
+    function keccak(
+        string memory _amount,
+        string memory _secret
+    ) public pure returns (bytes32) {
         bytes32 _bid = keccak256(abi.encode(_amount, _secret));
         return _bid;
+    }
+
+    // 需要升级的方法
+    function increment() public {
+        productIndex = productIndex + 1;
     }
 }
