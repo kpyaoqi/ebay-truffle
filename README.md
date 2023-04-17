@@ -1,6 +1,6 @@
 # ebay-truffle-auction
 
-声明：如有任何问题请联系wx：YQ-SmileATT
+## 声明：如有任何问题请联系wx：YQ-SmileATT
 
 一个基于truffle搭建的拍卖系统项目，这个项目主要是基于以太坊开发拍卖系统DApp，拍卖的原理类似于eBay，所以又可以叫做“去中心化eBay”项目.
 
