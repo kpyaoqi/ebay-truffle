@@ -16,12 +16,6 @@
 npm install -g truffle@5.7.4 webpack@5.75.0 ganache-cli@6.12.2
 ```
 
-新建一个空白文件夹，初始化项目(这一步应该要在域名文件添加一行**185.199.109.133  raw.githubusercontent.com**)
-
-```
-truffle unbox webpack
-```
-
 然后打开./app/package.json进行修改并安装相关包
 
 ```
