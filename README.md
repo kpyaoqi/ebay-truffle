@@ -2,6 +2,8 @@
 
 ## 声明：如有任何问题请联系wx：YQ-SmileATT
 
+前置知识：solidity、truffle、JavaScript、web3.js、Java(非必须其他后端语言均可)......
+
 一个基于truffle搭建的拍卖系统项目，这个项目主要是基于以太坊开发拍卖系统DApp，拍卖的原理类似于eBay，所以又可以叫做“去中心化eBay”项目.
 
 默认检测Metamask钱包插件，若有则使用MetaMask进行交互，若无则连接本地的8545端口.
