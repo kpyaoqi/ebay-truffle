@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "build": "webpack",
-    "dev": "SET NODE_OPTIONS=--openssl-legacy-provider && webpack-dev-server"
+    "dev": " webpack-dev-server"
   },
   "devDependencies": {
     "@openzeppelin/truffle-upgrades": "^1.17.0",

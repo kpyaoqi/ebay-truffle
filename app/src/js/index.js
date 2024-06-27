@@ -30,7 +30,7 @@ $(document).ready(function () {
         let sendAmount = ($("#bid-send-amount").val()).toString();
         let secretText = ($("#secret-text").val()).toString();
         let productId = $("#product-id").val();
-        let sealedBid = AppOfEthers.keccakWithamountAndsecretText(amount, secretText);
+        let sealedBid = AppOfWeb3.keccakWithamountAndsecretText(amount, secretText);
         sealedBid.then(sealedBid => {
             AppOfWeb3.bidProduct(productId, sealedBid, sendAmount);
         });

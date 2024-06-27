@@ -24,8 +24,9 @@ class Fun {
           if (data.length == 0) {
             $("#" + div).html('No products found');
           }
-          while (data.length > 0) {
-            let chunks = data.splice(0, 4);
+          if (data.products && data.products.length > 0) {
+            let chunks = data.products;
+            // let chunks = data.splice(0, 4);
             let row = $("<div/>");
             row.addClass("row");
             chunks.forEach(value => {

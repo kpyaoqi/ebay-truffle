@@ -14,6 +14,7 @@ export const AppOfWeb3 = {
     try {
       // get contract instance
       const networkId = await web3.eth.net.getId();
+      console.log(networkId);
       const deployedNetwork = ecommerce_store_artifacts.networks[networkId];
       this.EcommerceStore = new web3.eth.Contract(
         ecommerce_store_artifacts.abi,

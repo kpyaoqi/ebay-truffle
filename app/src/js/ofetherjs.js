@@ -1,9 +1,6 @@
 // import Fun from './function.js';
 import ecommerce_store_artifacts from '../../../build/contracts/EcommerceStore.json';
 const { ethers } = require("ethers");
-const { create } = require('ipfs-http-client');
-const ipfs = create({ host: 'localhost', port: '5001', protocol: 'http' });
-
 
 export const AppOfEthers = {
     provider: null,
@@ -13,6 +10,7 @@ export const AppOfEthers = {
         try {
             const { provider, singer } = this;
             const network = await provider.getNetwork();
+            console.log(network.chainId);
             const EcommerceStoreAddress = ecommerce_store_artifacts.networks[network.chainId].address;
             this.EcommerceStore = new ethers.Contract(
                 EcommerceStoreAddress,
